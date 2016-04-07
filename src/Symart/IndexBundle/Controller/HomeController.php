@@ -2,7 +2,6 @@
 
 namespace Symart\IndexBundle\Controller;
 
-use Doctrine\DBAL\Connection;
 use Symart\IndexBundle\Entity\Product;
 use Symart\IndexBundle\Fetcher\FetcherInterface;
 use Symart\IndexBundle\Parser\ParserResolverInterface;

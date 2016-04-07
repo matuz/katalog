@@ -46,6 +46,7 @@ $app['symart_index_parser_resolver'] = function () {
     $resolver->registerParser(new TextilmarParser());
     $resolver->registerParser(new \Symart\IndexBundle\Parser\DresowkaParser());
     $resolver->registerParser(new \Symart\IndexBundle\Parser\CraftoholicParser());
+    $resolver->registerParser(new \Symart\IndexBundle\Parser\MamaFabricsParser());
 
     return $resolver;
 };
@@ -75,6 +76,20 @@ $app->get(
                 'http://dresowka.pl/pl/c/Dzianiny-we-wzory/279',
                 'http://dresowka.pl/pl/c/Dzianiny-we-wzory/279/2',
                 'http://dresowka.pl/pl/c/Dzianiny-we-wzory/279/3',
+            ]
+        );
+    }
+);
+
+$app->get(
+    '/dresowka-mama',
+    function (\Silex\Application $app) {
+        /** @var HomeController $controller */
+        $controller = $app['symart_index_welcome_controller'];
+
+        return $controller->welcome(
+            [
+                'http://www.mamafabrics.pl/pl/c/Dresowka-drukowana-petelka/15',
             ]
         );
     }
