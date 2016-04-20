@@ -13,7 +13,7 @@ $app->register(
     new SilexGuzzle\GuzzleServiceProvider(),
     [
         'guzzle.base_uri' => "/",
-        'guzzle.timeout' => 3.14,
+        'guzzle.timeout' => 10,
     ]
 );
 
@@ -47,6 +47,7 @@ $app['symart_index_parser_resolver'] = function () {
     $resolver->registerParser(new \Symart\IndexBundle\Parser\DresowkaParser());
     $resolver->registerParser(new \Symart\IndexBundle\Parser\CraftoholicParser());
     $resolver->registerParser(new \Symart\IndexBundle\Parser\MamaFabricsParser());
+    $resolver->registerParser(new \Symart\IndexBundle\Parser\SprzedajemyTkaninyParser());
 
     return $resolver;
 };
@@ -64,7 +65,7 @@ $app['symart_index_welcome_controller'] = function ($app) {
 };
 
 $app->get(
-    '/dresowka',
+    '/dresowka_textil',
     function (\Silex\Application $app) {
         /** @var HomeController $controller */
         $controller = $app['symart_index_welcome_controller'];
@@ -73,9 +74,23 @@ $app->get(
             [
                 'http://sklep.textilmar.pl/dzianina-dresowa-wzor-c-433.html',
                 'http://sklep.textilmar.pl/dzianina-dresowa-c-289.html',
+            ]
+        );
+    }
+);
+
+$app->get(
+    '/dresowka',
+    function (\Silex\Application $app) {
+        /** @var HomeController $controller */
+        $controller = $app['symart_index_welcome_controller'];
+
+        return $controller->welcome(
+            [
                 'http://dresowka.pl/pl/c/Dzianiny-we-wzory/279',
                 'http://dresowka.pl/pl/c/Dzianiny-we-wzory/279/2',
                 'http://dresowka.pl/pl/c/Dzianiny-we-wzory/279/3',
+                'http://dresowka.pl/pl/c/Dzianiny-we-wzory/279/4',
             ]
         );
     }
@@ -115,17 +130,27 @@ $app->get(
         /** @var HomeController $controller */
         $controller = $app['symart_index_welcome_controller'];
 
-        $urls = [];
-        for ($i = 1; $i <= 42; $i ++) {
-            $urls[] = 'http://craftoholicshop.com/pl/c/Tkaniny/32/' . $i;
-        }
-
         return $controller->welcome(
             [
                 'http://sklep.textilmar.pl/plotna-bawelniane-wzor-c-392.html',
                 'http://sklep.textilmar.pl/plotna-bawelniane-kolor-c-445.html',
             ]
         );
+    }
+);
+$app->get(
+    '/bawelna2',
+    function (\Silex\Application $app) {
+        /** @var HomeController $controller */
+        $controller = $app['symart_index_welcome_controller'];
+        $urls =             [
+            'http://www.sprzedajemytkaniny.pl/pl/c/Tkaniny-Bawelniane/18',
+            'http://www.sprzedajemytkaniny.pl/pl/c/Tkaniny-Bawelniane/18/2',
+        ];
+        for ($i = 1; $i <= 15; $i ++) {
+            $urls[] = 'http://www.sprzedajemytkaniny.pl/pl/c/Tkaniny-bawelniane-Premium/39/' . $i;
+        }
+        return $controller->welcome(            $urls        );
     }
 );
 
@@ -143,5 +168,22 @@ $app->get(
         return $controller->welcome($urls);
     }
 );
+
+$app->get(
+    '/bawelna-czarna',
+    function (\Silex\Application $app) {
+        /** @var HomeController $controller */
+        $controller = $app['symart_index_welcome_controller'];
+
+        $urls = [];
+        for ($i = 1; $i <= 7; $i ++) {
+            $urls[] = 'http://craftoholicshop.com/pl/c/czarny/67/' . $i;
+        }
+
+        return $controller->welcome($urls);
+    }
+);
+
+
 
 $app->run();

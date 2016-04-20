@@ -70,7 +70,7 @@ class HomeController
 
             foreach ($products as $product){
                 ++$number;
-                $text .= sprintf('<div style=\'width: 100px; height: 100px; border-radius: 50px; background: url(%s) no-repeat; float: left; margin: 10px; \' >%d</div>', $product->getImage(), $number );
+                $text .= sprintf('<div style=\'width: 100px; height: 100px; border-radius: 50px; background: url(%s) no-repeat; background-position: center bottom; float: left; margin: 10px; \' >%d</div>', $product->getImage(), $number );
             }
         }
 
