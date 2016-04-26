@@ -49,6 +49,7 @@ $app['symart_index_parser_resolver'] = function () {
     $resolver->registerParser(new \Symart\IndexBundle\Parser\MamaFabricsParser());
     $resolver->registerParser(new \Symart\IndexBundle\Parser\OtulaParser());
     $resolver->registerParser(new \Symart\IndexBundle\Parser\SprzedajemyTkaninyParser());
+    $resolver->registerParser(new \Symart\IndexBundle\Parser\DrecottonParser());
 
     return $resolver;
 };
@@ -165,6 +166,19 @@ $app->get(
         for ($i = 1; $i <= 42; $i ++) {
             $urls[] = 'http://craftoholicshop.com/pl/c/Tkaniny/32/' . $i;
         }
+
+        return $controller->welcome($urls);
+    }
+);
+$app->get(
+    '/drecotton',
+    function (\Silex\Application $app) {
+        /** @var HomeController $controller */
+        $controller = $app['symart_index_welcome_controller'];
+
+        $urls = [];
+            $urls[] = 'http://drecotton.pl/pl/tkaniny-17#/page-1';
+            $urls[] = 'http://drecotton.pl/pl/tkaniny-17#/page-2';
 
         return $controller->welcome($urls);
     }
