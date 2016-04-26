@@ -47,6 +47,7 @@ $app['symart_index_parser_resolver'] = function () {
     $resolver->registerParser(new \Symart\IndexBundle\Parser\DresowkaParser());
     $resolver->registerParser(new \Symart\IndexBundle\Parser\CraftoholicParser());
     $resolver->registerParser(new \Symart\IndexBundle\Parser\MamaFabricsParser());
+    $resolver->registerParser(new \Symart\IndexBundle\Parser\OtulaParser());
     $resolver->registerParser(new \Symart\IndexBundle\Parser\SprzedajemyTkaninyParser());
 
     return $resolver;
