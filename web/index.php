@@ -54,7 +54,7 @@ $app['symart_index_parser_resolver'] = function () {
     return $resolver;
 };
 
-$app['symart_index_repository_product'] = function($app) {
+$app['symart_index_repository_product'] = function ($app) {
     return new \Symart\IndexBundle\Repository\ProductRepository($app['db']);
 };
 
@@ -67,7 +67,7 @@ $app['symart_index_welcome_controller'] = function ($app) {
 };
 
 $app->get(
-    '/dresowka_textil',
+            '/dresowka_textil',
     function (\Silex\Application $app) {
         /** @var HomeController $controller */
         $controller = $app['symart_index_welcome_controller'];
@@ -89,10 +89,7 @@ $app->get(
 
         return $controller->welcome(
             [
-                'http://dresowka.pl/pl/c/Dzianiny-we-wzory/279',
-                'http://dresowka.pl/pl/c/Dzianiny-we-wzory/279/2',
-                'http://dresowka.pl/pl/c/Dzianiny-we-wzory/279/3',
-                'http://dresowka.pl/pl/c/Dzianiny-we-wzory/279/4',
+                'http://dresowka.pl/modules/blocklayered/blocklayered-ajax.php?layered_quantity_1=1&layered_id_feature_107=107_15&id_category_layered=71&layered_price_slider=4_40&orderby=position&orderway=asc&n=250&p=1&_=' . date('U'),
             ]
         );
     }
@@ -145,16 +142,27 @@ $app->get(
     function (\Silex\Application $app) {
         /** @var HomeController $controller */
         $controller = $app['symart_index_welcome_controller'];
-        $urls =             [
-            'http://www.sprzedajemytkaniny.pl/pl/c/Tkaniny-Bawelniane/18',
-            'http://www.sprzedajemytkaniny.pl/pl/c/Tkaniny-Bawelniane/18/2',
-        ];
-        for ($i = 1; $i <= 15; $i ++) {
-            $urls[] = 'http://www.sprzedajemytkaniny.pl/pl/c/Tkaniny-bawelniane-Premium/39/' . $i;
+        $urls = [];
+        for ($i = 1; $i <= 6; $i++) {
+            $urls[] = 'http://www.sprzedajemytkaniny.pl/pl/c/Tkaniny-Bawelniane/18/' . $i;
         }
-        return $controller->welcome(            $urls        );
+        return $controller->welcome($urls);
     }
 );
+
+$app->get(
+    '/bawelna3',
+    function (\Silex\Application $app) {
+        /** @var HomeController $controller */
+        $controller = $app['symart_index_welcome_controller'];
+        $urls = [];
+        for ($i = 1; $i <= 15; $i++) {
+            $urls[] = 'http://www.sprzedajemytkaniny.pl/pl/c/Tkaniny-bawelniane-Premium/39/' . $i;
+        }
+        return $controller->welcome($urls);
+    }
+);
+
 
 $app->get(
     '/bawelna_premium',
@@ -163,7 +171,7 @@ $app->get(
         $controller = $app['symart_index_welcome_controller'];
 
         $urls = [];
-        for ($i = 1; $i <= 42; $i ++) {
+        for ($i = 1; $i <= 42; $i++) {
             $urls[] = 'http://craftoholicshop.com/pl/c/Tkaniny/32/' . $i;
         }
 
@@ -171,14 +179,29 @@ $app->get(
     }
 );
 $app->get(
-    '/drecotton',
+    '/tkaniny_drecotton_1',
     function (\Silex\Application $app) {
         /** @var HomeController $controller */
         $controller = $app['symart_index_welcome_controller'];
 
         $urls = [];
-            $urls[] = 'http://drecotton.pl/pl/tkaniny-17#/page-1';
-            $urls[] = 'http://drecotton.pl/pl/tkaniny-17#/page-2';
+        for ($i = 1; $i <= 57; $i++) {
+            $urls[] = 'http://drecotton.pl/pl/tkaniny-17#/page-' . $i;
+        }
+
+        return $controller->welcome($urls);
+    }
+);
+$app->get(
+    '/tkaniny_drecotton_2',
+    function (\Silex\Application $app) {
+        /** @var HomeController $controller */
+        $controller = $app['symart_index_welcome_controller'];
+
+        $urls = [];
+        for ($i = 58; $i <= 114; $i++) {
+            $urls[] = 'http://drecotton.pl/pl/tkaniny-17#/page-' . $i;
+        }
 
         return $controller->welcome($urls);
     }
@@ -191,14 +214,13 @@ $app->get(
         $controller = $app['symart_index_welcome_controller'];
 
         $urls = [];
-        for ($i = 1; $i <= 7; $i ++) {
+        for ($i = 1; $i <= 7; $i++) {
             $urls[] = 'http://craftoholicshop.com/pl/c/czarny/67/' . $i;
         }
 
         return $controller->welcome($urls);
     }
 );
-
 
 
 $app->run();

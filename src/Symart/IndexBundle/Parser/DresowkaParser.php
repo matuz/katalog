@@ -16,16 +16,18 @@ class DresowkaParser implements ParserInterface
      */
     public function parseIndexPage(Page $page)
     {
-        $pageContent = pQuery::parseStr($page->getHtml());
+        $obj = json_decode($page->getHtml(), true);
 
-        $divs = $pageContent->query('.products .product');
+        $pageContent = pQuery::parseStr($obj['productList']);
+
+        $divs = $pageContent->query('.product_list .product-image-container');
 
         $result = [];
         /** @var pQuery\DomNode $div */
         foreach ($divs as $div) {
             $result[] = (new Product())
-                ->setUrl($page->getHost() . $div->query('a.details')->attr('href'))
-                ->setImage($page->getHost() . $div->query('img')->attr('src'));
+                ->setUrl($page->getHost() . $div->query('a.product_img_link')->attr('href'))
+                ->setImage($div->query('img')->attr('src'));
         }
 
         return $result;
