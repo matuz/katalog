@@ -70,7 +70,7 @@ class GuzzleFetcherTest extends \PHPUnit_Framework_TestCase
      * @param string $pageName
      * @return \PHPUnit_Framework_MockObject_MockObject|ResponseInterface
      */
-    private function getResponse($pageName)
+    private function getResponse(string $pageName) : ResponseInterface
     {
         /** @var ResponseInterface | \PHPUnit_Framework_MockObject_MockObject $mock */
         $mock = $this->getMock(ResponseInterface::class);

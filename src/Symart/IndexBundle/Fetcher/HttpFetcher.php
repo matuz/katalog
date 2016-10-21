@@ -23,7 +23,7 @@ class HttpFetcher implements FetcherInterface
     /**
      * {@inheritdoc}
      */
-    public function fetchPages(array $pageList = array())
+    public function fetchPages(array $pageList = array()) : array
     {
         $pages = [];
 

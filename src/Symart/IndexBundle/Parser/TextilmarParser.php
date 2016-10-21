@@ -11,7 +11,7 @@ class TextilmarParser implements ParserInterface
     /**
      * {@inheritdoc}
      */
-    public function parseIndexPage(Page $page)
+    public function parseIndexPage(Page $page) : array
     {
         $pageContent = pQuery::parseStr($page->getHtml());
 
@@ -33,7 +33,7 @@ class TextilmarParser implements ParserInterface
      *
      * @return bool
      */
-    public function support(Page $page)
+    public function support(Page $page) : bool
     {
         return $page->getHost() === 'http://sklep.textilmar.pl';
     }

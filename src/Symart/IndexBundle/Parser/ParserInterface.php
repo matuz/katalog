@@ -12,12 +12,12 @@ interface ParserInterface
      * 
      * @return array|Product[]
      */
-    public function parseIndexPage(Page $page);
+    public function parseIndexPage(Page $page) : array;
 
     /**
      * @param Page $page
      *
      * @return bool
      */
-    public function support(Page $page);
+    public function support(Page $page) : bool;
 }

@@ -11,5 +11,5 @@ interface ParserResolverInterface
      *
      * @return ParserInterface
      */
-    public function getParser(Page $page);
+    public function getParser(Page $page) : ParserInterface;
 }

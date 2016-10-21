@@ -26,7 +26,7 @@ class HomeControllerTest extends \PHPUnit_Framework_TestCase
         $fetcher->method('fetchPages')->with([])->willReturn([]);
 
         $controller = new HomeController($fetcher, $parserResolver, $productRepository);
-        $response = $controller->welcome();
+        $response = $controller->products();
 
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }

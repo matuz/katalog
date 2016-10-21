@@ -1,8 +1,10 @@
 <?php
 
+use Silex\Application;
 use Symart\IndexBundle\Controller\HomeController;
 use Symart\IndexBundle\Fetcher\HttpFetcher;
 use Symart\IndexBundle\Parser\TextilmarParser;
+use Symfony\Component\HttpFoundation\Response;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -67,12 +69,12 @@ $app['symart_index_welcome_controller'] = function ($app) {
 };
 
 $app->get(
-            '/dresowka_textil',
-    function (\Silex\Application $app) {
+    '/dresowka_textil',
+    function (Application $app) : Response {
         /** @var HomeController $controller */
         $controller = $app['symart_index_welcome_controller'];
 
-        return $controller->welcome(
+        return $controller->products(
             [
                 'http://sklep.textilmar.pl/dzianina-dresowa-wzor-c-433.html',
                 'http://sklep.textilmar.pl/dzianina-dresowa-c-289.html',
@@ -82,12 +84,12 @@ $app->get(
 );
 
 $app->get(
-    '/dresowka',
-    function (\Silex\Application $app) {
+    '/dresowka_pl',
+    function (Application $app) : Response {
         /** @var HomeController $controller */
         $controller = $app['symart_index_welcome_controller'];
 
-        return $controller->welcome(
+        return $controller->products(
             [
                 'http://dresowka.pl/modules/blocklayered/blocklayered-ajax.php?layered_quantity_1=1&layered_id_feature_107=107_15&id_category_layered=71&layered_price_slider=4_40&orderby=position&orderway=asc&n=250&p=1&_=' . date('U'),
             ]
@@ -96,12 +98,12 @@ $app->get(
 );
 
 $app->get(
-    '/dresowka-mama',
-    function (\Silex\Application $app) {
+    '/dresowka_mama',
+    function (Application $app) : Response {
         /** @var HomeController $controller */
         $controller = $app['symart_index_welcome_controller'];
 
-        return $controller->welcome(
+        return $controller->products(
             [
                 'http://www.mamafabrics.pl/pl/c/Dresowka-drukowana-petelka/15',
             ]
@@ -111,11 +113,11 @@ $app->get(
 
 $app->get(
     '/minky',
-    function (\Silex\Application $app) {
+    function (Application $app) : Response {
         /** @var HomeController $controller */
         $controller = $app['symart_index_welcome_controller'];
 
-        return $controller->welcome(
+        return $controller->products(
             [
                 'http://sklep.textilmar.pl/minky-welur-c-382.html',
             ]
@@ -125,11 +127,11 @@ $app->get(
 
 $app->get(
     '/bawelna',
-    function (\Silex\Application $app) {
+    function (Application $app) : Response {
         /** @var HomeController $controller */
         $controller = $app['symart_index_welcome_controller'];
 
-        return $controller->welcome(
+        return $controller->products(
             [
                 'http://sklep.textilmar.pl/plotna-bawelniane-wzor-c-392.html',
                 'http://sklep.textilmar.pl/plotna-bawelniane-kolor-c-445.html',
@@ -138,35 +140,35 @@ $app->get(
     }
 );
 $app->get(
-    '/bawelna2',
-    function (\Silex\Application $app) {
+    '/bawelna-sprzedajemy_tkaniny',
+    function (Application $app) : Response {
         /** @var HomeController $controller */
         $controller = $app['symart_index_welcome_controller'];
         $urls = [];
         for ($i = 1; $i <= 6; $i++) {
             $urls[] = 'http://www.sprzedajemytkaniny.pl/pl/c/Tkaniny-Bawelniane/18/' . $i;
         }
-        return $controller->welcome($urls);
+        return $controller->products($urls);
     }
 );
 
 $app->get(
-    '/bawelna3',
-    function (\Silex\Application $app) {
+    '/bawelna_premium-sprzedajemy_tkaniny',
+    function (Application $app) : Response {
         /** @var HomeController $controller */
         $controller = $app['symart_index_welcome_controller'];
         $urls = [];
-        for ($i = 1; $i <= 15; $i++) {
+        for ($i = 1; $i <= 5; $i++) {
             $urls[] = 'http://www.sprzedajemytkaniny.pl/pl/c/Tkaniny-bawelniane-Premium/39/' . $i;
         }
-        return $controller->welcome($urls);
+        return $controller->products($urls);
     }
 );
 
 
 $app->get(
-    '/bawelna_premium',
-    function (\Silex\Application $app) {
+    '/bawelna_premium-craftoholic',
+    function (Application $app) : Response {
         /** @var HomeController $controller */
         $controller = $app['symart_index_welcome_controller'];
 
@@ -175,12 +177,12 @@ $app->get(
             $urls[] = 'http://craftoholicshop.com/pl/c/Tkaniny/32/' . $i;
         }
 
-        return $controller->welcome($urls);
+        return $controller->products($urls);
     }
 );
 $app->get(
     '/tkaniny_drecotton_1',
-    function (\Silex\Application $app) {
+    function (Application $app) : Response {
         /** @var HomeController $controller */
         $controller = $app['symart_index_welcome_controller'];
 
@@ -189,12 +191,12 @@ $app->get(
             $urls[] = 'http://drecotton.pl/pl/tkaniny-17#/page-' . $i;
         }
 
-        return $controller->welcome($urls);
+        return $controller->products($urls);
     }
 );
 $app->get(
     '/tkaniny_drecotton_2',
-    function (\Silex\Application $app) {
+    function (Application $app) : Response {
         /** @var HomeController $controller */
         $controller = $app['symart_index_welcome_controller'];
 
@@ -203,13 +205,13 @@ $app->get(
             $urls[] = 'http://drecotton.pl/pl/tkaniny-17#/page-' . $i;
         }
 
-        return $controller->welcome($urls);
+        return $controller->products($urls);
     }
 );
 
 $app->get(
-    '/bawelna-czarna',
-    function (\Silex\Application $app) {
+    '/bawelna-czarna-craftoholic',
+    function (Application $app) : Response {
         /** @var HomeController $controller */
         $controller = $app['symart_index_welcome_controller'];
 
@@ -218,9 +220,23 @@ $app->get(
             $urls[] = 'http://craftoholicshop.com/pl/c/czarny/67/' . $i;
         }
 
-        return $controller->welcome($urls);
+        return $controller->products($urls);
     }
 );
 
+$app->get(
+    '/',
+    function (Application $app) : Response {
+        $controller = $app['symart_index_welcome_controller'];
+        $routes = [];
+
+        foreach ($app['routes'] as $route) {
+            /** @var Silex\Route $route */
+            $routes[] = $route->getPath();
+        }
+
+        return $controller->welcome($routes);
+    }
+);
 
 $app->run();

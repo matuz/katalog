@@ -14,7 +14,7 @@ class DresowkaParser implements ParserInterface
      *
      * @return array|Product[]
      */
-    public function parseIndexPage(Page $page)
+    public function parseIndexPage(Page $page) : array
     {
         $obj = json_decode($page->getHtml(), true);
 
@@ -38,7 +38,7 @@ class DresowkaParser implements ParserInterface
      *
      * @return bool
      */
-    public function support(Page $page)
+    public function support(Page $page) : bool
     {
         return $page->getHost() === 'http://dresowka.pl';
     }

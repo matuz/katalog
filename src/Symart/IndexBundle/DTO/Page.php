@@ -17,7 +17,7 @@ class Page
     /**
      * @return string
      */
-    public function getHost()
+    public function getHost() : string
     {
         return $this->host;
     }
@@ -27,7 +27,7 @@ class Page
      *
      * @return $this
      */
-    public function setHost($host)
+    public function setHost(string $host) : Page
     {
         $this->host = $host;
 
@@ -37,7 +37,7 @@ class Page
     /**
      * @return string
      */
-    public function getHtml()
+    public function getHtml() : string
     {
         return $this->html;
     }
@@ -47,7 +47,7 @@ class Page
      *
      * @return $this
      */
-    public function setHtml($html)
+    public function setHtml(string $html) : Page
     {
         $this->html = $html;
 

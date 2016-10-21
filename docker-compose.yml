@@ -1,0 +1,8 @@
+server:
+  build: .
+  volumes:
+    - ./src:/var/www/src
+    - ./vendor:/var/www/vendor
+    - ./web:/var/www/web
+  ports:
+    - "80:8000"
