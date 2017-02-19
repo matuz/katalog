@@ -91,7 +91,8 @@ $app->get(
 
         return $controller->products(
             [
-                'http://dresowka.pl/modules/blocklayered/blocklayered-ajax.php?layered_quantity_1=1&layered_id_feature_107=107_15&id_category_layered=71&layered_price_slider=4_40&orderby=position&orderway=asc&n=250&p=1&_=' . date('U'),
+//                'http://dresowka.pl/modules/blocklayered/blocklayered-ajax.php?layered_quantity_1=1&layered_id_feature_107=107_15&id_category_layered=71&layered_price_slider=4_40&orderby=position&orderway=asc&n=250&p=1&_=' . date('U'),
+                'http://dresowka.pl/modules/blocklayered/blocklayered-ajax.php?layered_quantity_1=1&layered_id_feature_107=107_15&id_category_layered=71&layered_price_slider=2_40&orderby=position&orderway=asc&n=250&_=' . date('U'),
             ]
         );
     }

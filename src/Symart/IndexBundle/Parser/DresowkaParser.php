@@ -40,6 +40,6 @@ class DresowkaParser implements ParserInterface
      */
     public function support(Page $page) : bool
     {
-        return $page->getHost() === 'http://dresowka.pl';
+        return $page->getHost() === 'http://dresowka.pl' || $page->getHost() === 'https://dresowka.pl';
     }
 }
